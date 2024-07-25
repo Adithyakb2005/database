@@ -26,13 +26,14 @@ while True:
         print(data)
         for i in data:
             print(i)
-    elif ch=='3':
-        name = input("Enter the name: ")
-        new_salary = float(input("Enter the new salary: "))
-        con.execute("update staff set salary=? where name=?",(new_salary, name))
+    elif ch == '3':
+        name_to_update = input("Enter name of staff member to update: ")
+        new_salary = float(input("Enter new salary: "))
+        
+        update_query = "UPDATE staff SET salary = ? WHERE name = ?"
+        con.execute(update_query, (new_salary, name_to_update))
         con.commit()
-        print("Salary updated successfully.")
-        con.commit()
+        print("Staff updated successfully.")
     elif ch=='4':
         n=input("enter id:")
         con.execute("delete from staff where id=?",(n))
