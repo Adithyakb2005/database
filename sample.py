@@ -176,17 +176,73 @@
 #     print("{:<10}{:<16}".format(i[0],i[1]))
 
 
+# import sqlite3
+# con=sqlite3.connect("sample1.db")
+# try:
+#     con.execute("create table student(age int,name text,mark real)")
+# except:
+#     pass
+# name=str(input("name"))
+# con.execute("delete from student where name=?",(name,))
+# con.commit()
+# data=con.execute("select * from student")
+# print("{:<10}{:<16}{:<10}".format('name',"age","mark"))
+# print("-------------------------------")
+# for i in data:
+#     print("{:<10}{:<16}{:<10}".format(i[0],i[1],i[2]))
+
+
+# import sqlite3
+# con=sqlite3.connect("sample1.db")
+# try:
+#     con.execute("create table student(age int,name text,mark real)")
+# except:
+#     pass
+# data=con.execute("select * from student where name like '%n_'")
+# print("{:<10}{:<16}{:<10}".format('name',"age","mark"))
+# print("-------------------------------")
+# for i in data:
+#     print("{:<10}{:<16}{:<10}".format(i[0],i[1],i[2]))
+
+
+#ORDER BY
+    #ASSENTING ORDER
+# import sqlite3
+# con=sqlite3.connect("sample1.db")
+# try:
+#     con.execute("create table student(age int,name text,mark real)")
+# except:
+#     pass
+# data=con.execute("select * from student order by mark ")
+# print("{:<10}{:<16}{:<10}".format('age',"name","mark"))
+# print("-------------------------------")
+# for i in data:
+#     print("{:<10}{:<16}{:<10}".format(i[0],i[1],i[2]))
+
+    #DISENTING ORDER
+# import sqlite3
+# con=sqlite3.connect("sample1.db")
+# try:
+#     con.execute("create table student(age int,name text,mark real)")
+# except:
+#     pass
+# data=con.execute("select * from student order by mark desc")
+# print("{:<10}{:<16}{:<10}".format('age',"name","mark"))
+# print("-------------------------------")
+# for i in data:
+#     print("{:<10}{:<16}{:<10}".format(i[0],i[1],i[2]))
+
+#GROUP BY
+
 import sqlite3
 con=sqlite3.connect("sample1.db")
 try:
     con.execute("create table student(age int,name text,mark real)")
 except:
     pass
-name=str(input("name"))
-con.execute("delete from student where name=?",(name,))
-con.commit()
-data=con.execute("select * from student")
-print("{:<10}{:<16}{:<10}".format('name',"age","mark"))
+data=con.execute("select name,count(mark)from student group by name")
+print("{:<10}{:<16}{:<10}".format('age',"name","mark"))
 print("-------------------------------")
 for i in data:
-    print("{:<10}{:<16}{:<10}".format(i[0],i[1],i[2]))
+    print(i)
+    # print("{:<10}{:<16}{:<10}".format(i[0],i[1],i[2]))
